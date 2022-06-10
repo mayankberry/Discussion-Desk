@@ -138,8 +138,8 @@ MESSAGE_TAGS = {
 
 # email
 
-EMAIL_HOST= 'smtp.mail.yahoo.com'
+EMAIL_HOST= 'smtp.gmail.com'
 EMAIL_PORT=587
-EMAIL_HOST_USER='discussiondesk@yahoo.com'
-EMAIL_HOST_PASSWORD='sggbasbjkzzfpakn'
+EMAIL_HOST_USER='discussion.desk.iitm@gmail.com'
+EMAIL_HOST_PASSWORD='chftmaumyuovgulk'
 EMAIL_USE_TLS= True
