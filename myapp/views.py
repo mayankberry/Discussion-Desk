@@ -1,10 +1,10 @@
 # from pyexpat.errors import messages
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.core.mail import send_mail
-from myapp.models import contact
+from myapp.models import Challenge, contact, Answer
 
 # Create your views here.
 
@@ -29,6 +29,7 @@ def handleSignup(request):
         if not username.isalnum():
             messages.error(request, " User name should only contain letters and numbers")
             return redirect('/')
+
         if (pass1!= pass2):
              messages.error(request, " Passwords do not match")
              return redirect('/')
@@ -83,4 +84,38 @@ def Contact(request):
       messages.info(request, "Successfully Sent Your Query")
     return render(request, 'myapp/contact.html')
 
+def challenges(request):
+    return render(request, 'myapp/challenges.html')
 
+
+def quiz(request):
+    allQues= Challenge.objects.all()
+    context={'allQues': allQues}
+    return render(request, "myapp/quiz.html", context)
+
+
+def quizcontent(request, link):
+    ques= Challenge.objects.filter(link= link).first()
+    Anss= Answer.objects.filter(ques=ques)
+    context={'ques' : ques, 'Anss' : Anss}
+    return render(request, "myapp/quizcontent.html", context)
+
+def PostAnswer(request):
+    if request.method == "POST":
+        Ans= request.POST.get('Ans')
+        user= request.user
+        quessno =request.POST.get('quessno')
+        ques= Challenge.objects.get(sno=quessno)
+        Answ= Answer(Ans= Ans, user=user, ques=ques)
+        Answ.save()
+        messages.success(request, "Your comment has been posted successfully")
+    return HttpResponse("Answer Recorded Successfully")
+
+def usercheck(request):
+    if request.method == "POST":
+        if Answer.objects.filter(user=request.user).exists():
+            messages.error(request, "You have already given the test")
+            return redirect("/challenges")
+        else:
+            return redirect("/quiz")
+            

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'myapp.apps.MyappConfig',
     'questions.apps.QuestionsConfig',
     'django.contrib.humanize', 
+    'django_ace',
 ]
 
 MIDDLEWARE = [
@@ -110,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata' 
 
 USE_I18N = True
 
@@ -143,3 +144,6 @@ EMAIL_PORT=587
 EMAIL_HOST_USER='discussiondesk@yahoo.com'
 EMAIL_HOST_PASSWORD='sggbasbjkzzfpakn'
 EMAIL_USE_TLS= True
+
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'

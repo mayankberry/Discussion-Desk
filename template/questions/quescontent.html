@@ -11,12 +11,13 @@
 </div>
 <div class="container">
     <h2> Comments ({{comments.count}})</h2>
+    
     <div class="my-2">
         {% if user.is_authenticated %}
         <form action="/questions/postComment" method="post">
             {% csrf_token %}
             <div class="form-group">
-                <label for="exampleInputEmail1">Post Comment </label>
+                <label for="comment">Post Comment </label>
                 <input type="text" class="form-control" name="comment" placeholder="Enter comment here">
             </div>
             <input type="hidden" name="postSno" value="{{post.sno}}">
@@ -123,7 +124,6 @@
     </div>
     </div>
     {% endfor %}
-
     
 </div> -->
     {% endblock %}

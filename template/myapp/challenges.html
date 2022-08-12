@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+Challenges
+{% endblock title %}
+
+{% block body %}
+
+<div class="px-4 pt-1 my-5 text-center border-bottom">
+    <h1 class="display-4 fw-bold">Coding Challenges</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">A great way to improve your skills when learning to code is by solving coding challenges. Solving different types of challenges and puzzles can help you become a better problem solver, learn the intricacies of a programming language, prepare for job interviews, learn new algorithms, and more.</p>
+      <div class="my-2">
+        {% if user.is_authenticated %}
+          <form action="/usercheck" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <h3 style="padding-bottom:8px">Take Challenge</h3>
+            </div>
+            <button type="submit" class="btn" id="continuebutton" style="font-size:20px;">Enter</button>
+        </form><br>
+        {% else %}
+        <h3 style="padding-bottom:8px">Please login to Take the Challenge</h3>
+        {% endif %}
+    </div>
+      
+      <!-- <div class="justify-content-sm-center" style="margin-bottom:20px">
+        <a href="quiz" style="width:50px; display:inline-block; margin-right: 12px;"><img src="static/images/c_logo2.jpg" width="100%" height="100%" style="border-radius:100%"></a>
+        <a href="quiz" style="width:50px; display:inline-block; margin-right: 12px;"><img src="static/images/java_logo.jpg" width="100%" height="100%" style="border-radius:100%"></a>
+        <a href="quiz" style="width:50px; display:inline-block; margin-right: 12px;"><img src="static/images/php_logo.jpg" width="100%" height="100%" style="border-radius:100%"></a>
+        <a href="quiz" style="width:50px; display:inline-block; margin-right: 12px;"><img src="static/images/python_logo.png" width="100%" height="100%" style="border-radius:100%"></a>
+      </div> -->
+    </div>
+    <div class="overflow-hidden" style="max-height: 39vh;">
+      <div class="container px-5">
+        <img src="static/images/hero_challenge.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="700" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

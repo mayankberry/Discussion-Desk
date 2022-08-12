@@ -12,7 +12,8 @@ class Ques(models.Model):
     timeStamp=models.DateTimeField(blank=True)
     content=models.TextField()
 
-def __str__(self):
+
+    def __str__(self):
         return self.title + " by " + self.author
         
 class BlogComment(models.Model):
