@@ -43,7 +43,7 @@ def handleSignup(request):
         send_mail(
         'Signed Up Successfully',
         'Welcome to Discussion Desk, You have successfully Signed up to the Discussion Desk. \n\n\nDiscussion Desk of IITM serves as a resource to help students of IITM on programming and help them prepare for coding interview. Students can ask anything related to programming. Experts at Coding Forum provide programming problems of different difficulty levels. Students can post their answers which are evaluated by experts. Students are encouraged to clear their doubts by participating in discussions. Also, students can read discussions on different programming languages such as C, C++, PHP, Python, JavaScript, and much more.\n\n\n\nRegards\n\nDiscussion Desk (IITM)',
-        'discussiondesk@yahoo.com',
+        'discussion.desk.iitm@gmail.com',
         [email],
         fail_silently=False,
         )
